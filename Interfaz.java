@@ -49,7 +49,7 @@ public class Interfaz extends JFrame {
     static {
         ALGORITMOS.put("Fuerza bruta (modexFB)", Algoritmos::modexFB);
         ALGORITMOS.put("Voraz (modexV)", Algoritmos::modexV);
-        // ALGORITMOS.put("Programación dinámica (modexPD)", Algoritmos::modexPD);
+        ALGORITMOS.put("Programación dinámica (modexPD)", Algoritmos::modexPD);
     }
 
     private RedSocial red;           // red cargada o generada

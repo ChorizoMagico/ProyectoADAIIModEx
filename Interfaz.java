@@ -48,7 +48,7 @@ public class Interfaz extends JFrame {
     private static final Map<String, Function<RedSocial, Resultado>> ALGORITMOS = new LinkedHashMap<>();
     static {
         ALGORITMOS.put("Fuerza bruta (modexFB)", Algoritmos::modexFB);
-        // ALGORITMOS.put("Voraz (modexV)", Algoritmos::modexV);
+        ALGORITMOS.put("Voraz (modexV)", Algoritmos::modexV);
         // ALGORITMOS.put("Programación dinámica (modexPD)", Algoritmos::modexPD);
     }
 

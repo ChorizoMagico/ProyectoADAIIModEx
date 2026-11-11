@@ -81,7 +81,7 @@ public class Interfaz extends JFrame {
         actualizarControles(true);
     }
 
-    // ---------------------------------------------------------------- construcción
+    //Construcción
 
     private static DefaultTableModel crearModelo(String... columnas) {
         return new DefaultTableModel(columnas, 0) {
@@ -155,7 +155,7 @@ public class Interfaz extends JFrame {
         btnGuardar.setEnabled(libre && resultado != null);
     }
 
-    // ---------------------------------------------------------------- acciones
+    // Acciones
 
     private void cargar() {
         File archivo = elegirArchivo(true, null);
@@ -264,7 +264,7 @@ public class Interfaz extends JFrame {
         }
     }
 
-    // ---------------------------------------------------------------- mostrar datos
+    // Mostrar datos
 
     private void mostrarRed(RedSocial nueva, String descripcion) {
         red = nueva;
@@ -308,7 +308,7 @@ public class Interfaz extends JFrame {
         sb.append("Esfuerzo de cada agente moderado: ceil(|o| * (1 - r) * inf)\n");
 
         int esfuerzoTotal = 0;
-        double sumaNoModerados = 0;   // suma de o^2 * inf de los agentes que NO se moderan
+        double sumaNoModerados = 0;   // suma de o^2 * inf de los agentes que no se moderan
 
         for (int i = 0; i < n; i++) {
             Agente a = r.getAgente(i);
@@ -344,7 +344,7 @@ public class Interfaz extends JFrame {
         txtVerificacion.setCaretPosition(0);
     }
 
-    // ---------------------------------------------------------------- utilidades
+    // Utilidades
 
     private static String f(String formato, Object... argumentos) {
         return String.format(Locale.US, formato, argumentos);

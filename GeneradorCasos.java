@@ -25,7 +25,8 @@ import modelo.RedSocial;
  * Uso por consola:  java GeneradorCasos <n> <fraccion 0..1> <semilla> <archivo_salida>
  */
 public class GeneradorCasos {
-
+    //Recibe la cantidad de agentes; una fracción que multiplica al esfuerzo total de moderar todos los agentes, de tal forma que 
+    //El esfuerzo máximo no alcance para moderar todos los agentes; y una semilla para la pseudoaleatoriedad
     public static RedSocial generar(int n, double fraccionPresupuesto, long semilla) {
         if (n < 1) {
             throw new IllegalArgumentException("n debe ser al menos 1");
@@ -54,19 +55,31 @@ public class GeneradorCasos {
         return new RedSocial(agentes, rMax);
     }
 
-    /** Escribe la red en el formato de entrada del enunciado. */
+    /** Escribe la red en un archivo de texto
+     *  en el formato de entrada del enunciado.
+     * Recibe la ruta a guardar y la red */
     public static void escribirEntrada(String ruta, RedSocial red) throws IOException {
+
+        //sb es un string que se va construyendo
         StringBuilder sb = new StringBuilder();
+        //La primera línea del archivo es la cantidad de agentes
         sb.append(red.cantidadAgentes()).append('\n');
+
+        //Por cada línea, pone los 3 atributos de un agente (escribe tantas líneas como agentes tiene la red social)
         for (int i = 0; i < red.cantidadAgentes(); i++) {
             Agente a = red.getAgente(i);
             sb.append(String.format(Locale.US, "%d,%.2f,%.2f",
                     a.getOpinion(), a.getReceptividad(), a.getInfluencia())).append('\n');
         }
+
+        //En la última línea, escribe el esfuerzo máximo de la red
         sb.append(red.getEsfuerzoMaximo()).append('\n');
+
+        //Guarda el archivo
         Files.writeString(Path.of(ruta), sb.toString(), StandardCharsets.UTF_8);
     }
 
+    //La forma en que se llama a la funcionalidad con comandos
     public static void main(String[] args) throws IOException {
         if (args.length != 4) {
             System.out.println("Uso: java GeneradorCasos <n> <fraccion 0..1> <semilla> <archivo_salida>");

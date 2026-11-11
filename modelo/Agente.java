@@ -17,14 +17,16 @@ public class Agente {
     public double getInfluencia() { return influencia; }
 
 
-    //Revisar:
-    /** Esfuerzo de llevar su opinión a 0: ceil(|o| * (1 - r) * inf). */
+    // Esfuerzo de llevar la opinión de un agente individual a 0
+    //Es valor absoluto(opinion de agente antes de moderar) y no valor absoluto (opinion  de agente
+    //antes de moderar - opinion de agente después de moderar) porque la opinión de un agente después
+    //de ser moderado es 0.
     public int esfuerzo() {
         // el -1e-9 evita que errores de punto flotante (9.000000000000002) suban el ceil
         return (int) Math.ceil(Math.abs(opinion) * (1 - receptividad) * influencia - 1e-9);
     }
 
-    /** Aporte al extremismo si NO se modera: o^2 * inf. */
+    /** Aporte al extremismo si no se modera: o^2 * inf. */
     public double pesoExtremismo() {
         return (double) opinion * opinion * influencia;
     }
